@@ -13,7 +13,7 @@ module Grape
           belongs_to :resource_owner, class_name: Grape::OAuth2.config.resource_owner_class_name,
                                       foreign_key: :resource_owner_id
 
-          validates :token, presence: true, uniqueness: true
+          validates :token, presence: true, uniqueness: {case_sensitive: true}
 
           before_validation :setup_expiration, on: :create
           before_validation :generate_tokens, on: :create
