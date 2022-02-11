@@ -11,7 +11,7 @@ module Grape
                                    foreign_key: :client_id, dependent: :delete_all
 
           validates :key, :secret, presence: true
-          validates :key, uniqueness: true
+          validates :key, uniqueness: {case_sensitive: true}
 
           before_validation :generate_keys, on: :create
 
